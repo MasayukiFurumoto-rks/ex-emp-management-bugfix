@@ -37,6 +37,9 @@
 						<div class="alert alert-danger" th:if="${emailErrorMessage}!=null">
                        		<p th:text="${emailErrorMessage}"></p>
 	                    </div>
+						<div class="alert alert-danger" th:if="${passwordErrorMessage}!=null">
+                       		<p th:text="${passwordErrorMessage}"></p>
+	                    </div>
 							<!-- 氏名 -->
 							<div class="form-group">
 								<div class="row">
@@ -82,19 +85,32 @@
 									</div>
 								</div>
 							</div>
+							<!-- 確認用パスワード -->
+							<div class="form-group">
+								<div class="row">
+									<div class="col-sm-12">
+										<label for="confirmPassword">
+											パスワード:
+										</label>
+										<label th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="error-messages">
+											パスワードを入力してください
+										</label>
+										<span id="duplicateMessage" class="error-messages"></span>
+										<input type="password" name="confirmPassword" id="confirmPassword" class="form-control" placeholder="password"
+											 th:field="*{confirmPassword}" th:errorclass="error-input" value="xxxxxxxx">
+									</div>
+								</div>
+							</div>
 							<!-- 登録ボタン -->
 							<div class="form-group">
 								<div class="row">
 									<div class="col-sm-12">
-										<button type="submit" class="btn btn-primary" id="register">登録</button>
-<!-- 										<button type="button" class="btn btn-primary" id="register">登録</button> -->
+										<button type="button" class="btn btn-primary" id="register">登録</button>
 									</div>
 								</div>
 							</div>
 						</fieldset>
 					</form>
-
-
 
 <!-- ここから下を編集する必要はありません -->
 				</div>
